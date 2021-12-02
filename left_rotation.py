@@ -19,11 +19,14 @@ def rotLeft(a, d):
     result_array = []
     remaining_array = []
     
+	# retrieve list items that will be appended to the back of the list i.e. this will cause the remaining list items to move to the left
     for i in range(d):
         result_array.append(a[i])
     
+	# retrieve the remaining list items that will not be affected by the rotation using list slicing
     remaining_array = a[d:]
     
+	# append the remaining list items to the front of the list in sequential order
     for i in range(len(remaining_array)):
         result_array.insert(i, remaining_array[i])
             
