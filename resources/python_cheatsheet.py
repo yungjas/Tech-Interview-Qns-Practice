@@ -74,6 +74,8 @@ str1 = "help"
 for each_elem in str1:
     print(each_elem)
 
+# to convert string to list, can do the following:
+list_str = list(str1)
 
 '''
 DICTIONARY METHODS:
