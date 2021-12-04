@@ -14,6 +14,11 @@ reverse()	# Reverses the order of the list
 sort()      # Sorts the list
 a[1: ]      # Select all elements starting from the 2nd element in the list --> list slicing
 
+# loop through a list
+list = [1, 2, 3]
+for each_elem in list:
+    print(list)
+
 
 '''
 STRING METHODS:
@@ -64,6 +69,11 @@ translate()	    # Returns a translated string, first para takes in a character t
 upper()	        # Converts a string into upper case
 zfill()	        # Fills the string with a specified number of 0 values at the beginning
 
+# loop through a string
+str1 = "help"
+for each_elem in str1:
+    print(each_elem)
+
 
 '''
 DICTIONARY METHODS:
@@ -80,9 +90,32 @@ setdefault()	# Returns the value of the specified key. If the key does not exist
 update()	    # Updates the dictionary with the specified key-value pairs
 values()	    # Returns a list of all the values in the dictionary
 
+thisdict =	{
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+# loop through a dictionary and print all key names
+for each_key in thisdict:
+    print(each_key)
+
+# loop through a dictionary and print all values
+for each_key in thisdict:
+    print(this_dict[each_key])
+
+# loop through a dictionary and print all keys and its corresponding values
+for x, y in thisdict.items():
+    print(x, y) 
+
 
 '''
-TUPLE METHODS:a
+TUPLE METHODS:
 '''
 count()	# Returns the number of times a specified value occurs in a tuple
 index()	# Searches the tuple for a specified value and returns the position of where it was found
+
+# loop through a tuple
+thistuple = ("apple", "banana", "cherry")
+for x in thistuple:
+  print(x)
