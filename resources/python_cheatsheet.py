@@ -77,6 +77,10 @@ for each_elem in str1:
 # to convert string to list, can do the following:
 list_str = list(str1)
 
+# string slicing
+b = "Hello, World!"
+print(b[2:5]) # prints characters from position 2 to 4 --> outputs "llo"
+
 '''
 DICTIONARY METHODS:
 '''
