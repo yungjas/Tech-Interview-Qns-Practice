@@ -1,4 +1,19 @@
 '''
+PRINT:
+'''
+# print each variable in the same line, separate them by space
+print(line, end=" ")
+
+
+'''
+READ INPUT:
+'''
+import sys
+for line in sys.stdin:
+    print(line.rstrip())
+
+
+'''
 LIST METHODS:
 '''
 append()	# Adds an element at the end of the list
@@ -11,13 +26,20 @@ insert()	# Adds an element at the specified position e.g. list1.insert(0, test) 
 pop()	    # Removes the element at the specified position e.g. list1.pop(0) --> deletes 1st element of list1
 remove()	# Removes the first item with the specified value
 reverse()	# Reverses the order of the list
-sort()      # Sorts the list
+sort()      # Sorts the list, add reverse=True if want to sort in desc order
 a[1: ]      # Select all elements starting from the 2nd element in the list --> list slicing
 
 # loop through a list
 list = [1, 2, 3]
 for each_elem in list:
     print(list)
+
+# turn list into dict
+from collections import Counter
+
+the_list = [1,1,1,2,3]
+new_dict = Counter(the_list)
+print(new_dict)
 
 
 '''
@@ -35,7 +57,7 @@ format()	    # Formats specified values in a string
 format_map()	# Formats specified values in a string
 index()	        # Searches the string for a specified value and returns the position of where it was found
 isalnum()	    # Returns True if all characters in the string are alphanumeric
-isalpha()	    # Returns True if all characters in the string are in the alphabet
+isalpha()	    # Returns True if all characters in the string are alphabets
 isascii()	    # Returns True if all characters in the string are ascii characters
 isdecimal()	    # Returns True if all characters in the string are decimals
 isdigit()	    # Returns True if all characters in the string are digits
@@ -47,7 +69,7 @@ isspace()	    # Returns True if all characters in the string are whitespaces
 istitle() 	    # Returns True if the string follows the rules of a title
 isupper()	    # Returns True if all characters in the string are upper case
 join()	        # Converts the elements of an iterable into a string
-ljust()	        # Returns a left justified version of the string
+ljust()	        # Adds padding to the right of the string
 lower()	        # Converts a string into lower case
 lstrip()	    # Returns a left trim version of the string
 maketrans()	    # Returns a translation table to be used in translations
@@ -55,7 +77,7 @@ partition()	    # Returns a tuple where the string is parted into three parts
 replace()	    # Returns a string where a specified value is replaced with a specified value
 rfind()	        # Searches the string for a specified value and returns the last position of where it was found
 rindex()	    # Searches the string for a specified value and returns the last position of where it was found
-rjust()	        # Returns a right justified version of the string
+rjust()	        # Adds padding to the left of the string
 rpartition()	# Returns a tuple where the string is parted into three parts
 rsplit()	    # Splits the string at the specified separator, and returns a list
 rstrip()	    # Returns a right trim version of the string
@@ -80,6 +102,7 @@ list_str = list(str1)
 # string slicing
 b = "Hello, World!"
 print(b[2:5]) # prints characters from position 2 to 4 --> outputs "llo"
+
 
 '''
 DICTIONARY METHODS:
@@ -125,3 +148,35 @@ index()	# Searches the tuple for a specified value and returns the position of w
 thistuple = ("apple", "banana", "cherry")
 for x in thistuple:
   print(x)
+
+
+'''
+INHERITENCE:
+'''
+class Staff:
+    def __init__(self, name="", department="",
+                 date_of_joining=datetime.today(),
+                 base_salary=0):
+        self.name = name
+        self.department = department
+        self.date_of_joining = date_of_joining
+        self.base_salary = base_salary
+
+    def get_salary(self):
+        return self.base_salary
+
+# Manager has its own attributes i.e. bonus perk
+class Manager(Staff):
+    def __init__(self, name="", department="",
+                 date_of_joining=datetime.today(),
+                 base_salary=0,
+                 bonus_perk=0):
+        # inherit from Staff class
+        Staff.__init__(self, name, department, date_of_joining,
+                       base_salary)
+        # this attribute is only specific to managers
+        self.bonus_perk = bonus_perk
+
+    # polymorphic method
+    def get_salary(self):
+        return self.base_salary + self.bonus_perk  
