@@ -5,6 +5,7 @@ def print_formatted(number):
     for i in range(1, number+1):
         padding = len(bin(number)[2:])
         
+        # for rjust method, need to put " " so that it will input the number of spaces according to the length of the binary of the input
         print(str(i).rjust(padding), end=" ")
         print(oct(i)[2:].capitalize().rjust(padding), end=" ")
         print(hex(i)[2:].rjust(padding), end=" ") 
