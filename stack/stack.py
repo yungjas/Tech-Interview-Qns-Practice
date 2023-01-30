@@ -1,3 +1,5 @@
+# Stack: Last In First Out
+
 class Stack:
     def __init__(self):
         self.items = []
@@ -9,4 +11,5 @@ class Stack:
         return self.items.append(data)
     
     def pop(self):
+        # removes the last item that has entered the stack
         return self.items.pop()

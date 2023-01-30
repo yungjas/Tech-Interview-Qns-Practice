@@ -1,3 +1,8 @@
+'''
+O(n) complexity
+
+'''
+
 import stack
 
 s = stack.Stack()

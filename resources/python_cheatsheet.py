@@ -23,16 +23,18 @@ count()	    # Returns the number of elements with the specified value
 extend()	# Add the elements of a list (or any iterable), to the end of the current list
 index()	    # Returns the index of the first element with the specified value
 insert()	# Adds an element at the specified position e.g. list1.insert(0, test) --> insert at 1st position of the list with the string "test"
-pop()	    # Removes the element at the specified position e.g. list1.pop(0) --> deletes 1st element of list1
+pop()	    # Removes the element at the specified position e.g. list1.pop(0) --> deletes 1st element of list1. The default value is -1 which means last item of the list is popped out
 remove()	# Removes the first item with the specified value
 reverse()	# Reverses the order of the list
 sort()      # Sorts the list, add reverse=True if want to sort in desc order
 a[1: ]      # Select all elements starting from the 2nd element in the list --> list slicing
 
 # loop through a list
-list = [1, 2, 3]
-for each_elem in list:
-    print(list)
+list_test = [1, 2, 3]
+for each_elem in list_test:
+    print(each_elem)
+for i in range(len(list_test)):
+    print(list_test[i])
 
 # turn list into dict
 from collections import Counter
@@ -88,7 +90,7 @@ strip()	        # Returns a trimmed version of the string
 swapcase()	    # Swaps cases, lower case becomes upper case and vice versa
 title()	        # Converts the first character of each word to upper case
 translate()	    # Returns a translated string, first para takes in a character that you want to change, second para takes in a character you want the first character to change to
-upper()	        # Converts a string into upper case
+upper()	      # Converts a string into upper case
 zfill()	        # Fills the string with a specified number of 0 values at the beginning
 
 # loop through a string
@@ -102,6 +104,10 @@ list_str = list(str1)
 # string slicing
 b = "Hello, World!"
 print(b[2:5]) # prints characters from position 2 to 4 --> outputs "llo"
+
+# reverse a string
+str2 = "hi"
+print(str2[::-1])
 
 
 '''
@@ -135,7 +141,7 @@ for each_key in thisdict:
 
 # loop through a dictionary and print all keys and its corresponding values
 for x, y in thisdict.items():
-    print(x, y) 
+    print(x, y)
 
 
 '''
@@ -179,4 +185,122 @@ class Manager(Staff):
 
     # polymorphic method
     def get_salary(self):
-        return self.base_salary + self.bonus_perk  
+        return self.base_salary + self.bonus_perk
+
+
+'''
+STACK:
+'''
+# Stack: Last In First Out
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def is_empty(self):
+        return self.items == []
+    
+    def push(self, data):
+        return self.items.append(data)
+    
+    def pop(self):
+        # removes the last item that has entered the stack
+        return self.items.pop()  
+
+
+'''
+QUEUE:
+'''
+# Queue: First In First Out
+class Queuee:
+    def __init__(self):
+        self.items = []
+    
+    def is_empty(self):
+        return self.items == []
+    
+    def enqueue(self, data):
+        self.items.append(data)
+    
+    def dequeue(self):
+        # remove the 1st item of the queue
+        return self.items.pop(0)
+
+
+'''
+DFS:
+'''
+# Using a Python dictionary to act as an adjacency list
+graph = {
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+}
+
+visited = set() # Set to keep track of visited nodes of graph.
+
+def dfs(visited, graph, node):  #function for dfs 
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+# Driver Code
+print("Following is the Depth-First Search")
+dfs(visited, graph, '5')
+
+
+'''
+BFS:
+'''
+graph = {
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+}
+
+visited = [] # List for visited nodes.
+queue = []     # Initialize a queue
+
+def bfs(visited, graph, node): # function for BFS
+  visited.append(node)
+  queue.append(node)
+
+  while queue:          # Creating loop to visit each node
+    m = queue.pop(0) 
+    print (m, end = " ") 
+
+    for neighbour in graph[m]:
+      if neighbour not in visited:
+        visited.append(neighbour)
+        queue.append(neighbour)
+
+# Driver Code
+print("Following is the Breadth-First Search")
+bfs(visited, graph, '5')    # function calling
+
+
+'''
+BINARY SEARCH:
+'''
+def binary_search(array, target):
+    lower = -1
+    upper = len(array)
+    while not (lower + 1 == upper):
+        mid = (lower + upper) // 2
+        if target == array[mid]:
+            return mid
+        elif target < array[mid]:
+            # search lower region
+            upper = mid
+        else:
+            # search upper region
+            lower = mid
+    
+    return -1
