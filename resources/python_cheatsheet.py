@@ -31,10 +31,19 @@ a[1: ]      # Select all elements starting from the 2nd element in the list --> 
 
 # loop through a list
 list_test = [1, 2, 3]
-for each_elem in list_test:
+list_test2 = [4, 5, 6]
+for each_elem in list_test: # with value
     print(each_elem)
-for i in range(len(list_test)):
+for i in range(len(list_test)): # with index
     print(list_test[i])
+for i, n in enumerate(list_test): # with index and value
+    print(i, n)
+for n1, n2 in zip(list_test, list_test2): # loop thru multiple lists simultaneously with unpacking --> output: 1 4 \n(next line) 2 5 \n(next line) 3 6
+    print(n1, n2)
+
+# sorting list using custom attributes
+list_str = ["Alice", "Bob", "Jasmine"]
+list_str.sort(key=lambda x: len(x)) # sort in asc based on length of each string
 
 # turn list into dict
 from collections import Counter
@@ -109,6 +118,10 @@ print(b[2:5]) # prints characters from position 2 to 4 --> outputs "llo"
 str2 = "hi"
 print(str2[::-1])
 
+# getting ascii value of a character
+print(ord("a"))
+print(ord("b"))
+
 
 '''
 DICTIONARY METHODS:
@@ -154,6 +167,51 @@ index()	# Searches the tuple for a specified value and returns the position of w
 thistuple = ("apple", "banana", "cherry")
 for x in thistuple:
   print(x)
+
+# can be used as keys for dict
+my_dict = {(1, 2): 3}
+
+# can be used as keys for set
+my_set = set()
+my_set.add((1, 2))
+print((1, 2) in my_set) # result: true
+
+
+'''
+HEAPS (a concrete implementation of the priority queue using an array):
+It can be conceptually represented as a particular binary tree
+'''
+import heapq
+
+# Min Heap: smallest to largest
+minHeap = [] # under the hood they are arrays
+heapq.heappush(minHeap, 3)
+heapq.heappush(minHeap, 2)
+heapq.heappush(minHeap, 4) # minHeap looks like this currently: [2, 3, 4]
+print(minHeap[0]) # min value is always at index 0
+
+# Max Heap: largest to smallest
+# since python doesn't support max heap and only min heap, we can use negative numbers to store from largest to smallest:
+maxHeap = []
+heapq.heappush(minHeap, -3)
+heapq.heappush(minHeap, -2)
+heapq.heappush(minHeap, -4) # maxHeap looks like this currently: [-4, -3, -2]
+
+# max value is always at index 0, but have to multiply by -1 to negate the negative value aka make it positive
+print(-1 * maxHeap[0])
+
+# build heap from initial values
+# useful when you want to sort list but want it to be slightly faster (sort is O(n log n) which is slower than using heap which is linear time O(n))
+arr = [2, 1, 8, 4, 5]
+heapq.heapify(arr)
+# loop thru the heap and keep printing the values --> result: 
+# 1
+# 2
+# 4
+# 5
+# 8
+while arr:
+    print(heapq.heappop(arr))
 
 
 '''
@@ -224,6 +282,26 @@ class Queuee:
     def dequeue(self):
         # remove the 1st item of the queue
         return self.items.pop(0)
+
+
+'''
+DOUBLE-ENDED QUEUE (elements can be added or removed from either the front or back):
+'''
+from collections import deque
+
+queue = deque()
+queue.append(1) # add 1 to the back of the queue (right side)
+queue.append(2) # add 2 to the back of the queue (right side)
+print(queue) # result: dequeue([1, 2])
+
+queue.popleft() # remove element on the leftmost side of the queue
+print(queue) # result: dequeue([2])
+
+queue.appendleft(1) # add value to the leftmost of the queue
+print(queue) # result: dequeue([1, 2])
+
+queue.pop() # pop from the right side
+print(queue) # result: dequeue([1])
 
 
 '''
