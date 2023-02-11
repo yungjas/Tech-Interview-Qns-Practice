@@ -7,7 +7,7 @@ def reverse_stack(stack):
     if len(stack) == 0:
         return []
     else:
-        top_element = stack.pop() # start removing elements from index 0 so that whenever the function returns the recursive call it will start from the last element of the stack passed in which is the TOP
+        top_element = stack.pop(0) # start removing elements from index 0 so that whenever the function returns the recursive call it will start from the last element of the stack passed in which is the TOP
         reverse_stack(stack)
         insert_at_bottom(stack, top_element)
         return stack
